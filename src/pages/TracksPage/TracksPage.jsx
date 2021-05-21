@@ -1,19 +1,19 @@
 import React from 'react';
 import {Footer} from '../../components/footer'
 import {Header} from '../../components/header'
-import {SingerList} from '../../components/SingerList'
+import {TrackList} from '../../components/TrackList/TrackList'
 
-export class SingersPage extends React.Component{
+export class TracksPage extends React.Component{
 
 render() {
 return (
     <div className="p-0 m-0">
         <Header/>
         <div>
-        <a href="/addSinger" class="btn btn-secondary" role="button">Add Track</a>
+        <a href="/addTrack" class="btn btn-secondary" role="button">Add Track</a>
         </div>
         <div class='min-vh-100'>
-         <SingerList/>   
+         <TrackList/>   
         </div>
         <Footer/>
     </div>

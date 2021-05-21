@@ -2,10 +2,14 @@ import './App.css';
 
 import {HomePage} from './pages/HomePage/HomePage'
 import {SingersPage} from './pages/SingersPage/SingersPage'
-import TrackList from './components/TrackList/TrackList'
+import SingerForm from './pages/SingersPage/SingerForm'
+import TrackForm from './pages/TracksPage/TrackForm'
+import {TracksPage} from './pages/TracksPage/TracksPage'
 
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import PostFormSinger from './pages/SingersPage/SingerForm';
+import FormImpl from 'react-bootstrap/esm/Form';
 
 function App() {
   return (
@@ -18,12 +22,17 @@ function App() {
         <Route path="/" component={HomePage} exact />
       </Switch>
       <Switch>
-        <Route path="/tracks" component={TrackList} />
+        <Route path="/tracks" component={TracksPage} />
+     </Switch>
+     <Switch>
+        <Route path="/addTrack" component={TrackForm} />
+     </Switch>
+     <Switch>
+        <Route path="/addSinger" component={SingerForm} />
      </Switch>
     </div>
     </Router>
   );
 }
-
 
 export default App;
