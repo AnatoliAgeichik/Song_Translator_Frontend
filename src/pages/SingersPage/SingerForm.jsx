@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import { Footer } from '../../components/footer'
-import {Header} from '../../components/header'
+import { Footer } from '../../components/Footer/footer'
+import {Header} from '../../components/Header/header'
 
 class FormSinger extends Component{
     constructor(props){
@@ -10,7 +10,7 @@ class FormSinger extends Component{
         this.state ={
             name:''
         }
-    }
+    }    
 
     changeHandler = (e) =>{
         this.setState({[e.target.name]: e.target.value})

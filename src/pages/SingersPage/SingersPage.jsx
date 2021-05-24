@@ -1,7 +1,7 @@
 import React from 'react';
-import {Footer} from '../../components/footer'
-import {Header} from '../../components/header'
-import {SingerList} from '../../components/SingerList'
+import {Footer} from '../../components/Footer/footer'
+import {Header} from '../../components/Header/header'
+import {SingerList} from '../../components/SingerList/SingerList'
 
 export class SingersPage extends React.Component{
 

@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {Footer} from '../../components/footer'
-import {Header} from '../../components/header'
+import {Footer} from '../../components/Footer/footer'
+import {Header} from '../../components/Header/header'
 
 
 class TrackForm extends Component{
-    constructor(props){
+      constructor(props){
         super(props)
-
         this.state ={
             name:'',
             text:'',
@@ -23,7 +22,9 @@ class TrackForm extends Component{
     submitHandler = e => {
         e.preventDefault()
         console.log(this.state)
-        this.state['singer'] = [this.state['singer']]
+        this.state['singer']=(this.state['singer'].split(',')).map(function(name){
+            return name.trim()
+        })        
         axios.post('http://127.0.0.1:8000/api/tracks/', this.state)
         .then(response => {
             console.log(response)
@@ -38,11 +39,11 @@ class TrackForm extends Component{
         const {name, text, original_language, singer} = this.state
         return(
             <div>
-                <Header/>
-            
-            <div class="offset-md-4"  style={{ width: "36rem" }}>
+                <Header/> 
+            <div class="offset-md-4 min-vh-100"  style={{ width: "36rem" }}>
                 <form onSubmit={this.submitHandler} >
                     <div class="form-group">
+                    <i class="fa fa-google"></i>
                     <label>Track Name</label>
                     <input 
                     type="text" 
@@ -74,7 +75,7 @@ class TrackForm extends Component{
                     </div>
 
                     <div class="form-group">
-                    <label>Singer id</label>
+                    <label>Singer name</label>
                     <input 
                     type="text" 
                     class="form-control" 

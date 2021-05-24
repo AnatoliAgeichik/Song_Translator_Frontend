@@ -8,8 +8,7 @@ import {TracksPage} from './pages/TracksPage/TracksPage'
 
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import PostFormSinger from './pages/SingersPage/SingerForm';
-import FormImpl from 'react-bootstrap/esm/Form';
+
 
 function App() {
   return (
