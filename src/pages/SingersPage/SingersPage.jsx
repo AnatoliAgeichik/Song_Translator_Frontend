@@ -1,7 +1,9 @@
 import React from 'react';
-import {Footer} from '../../components/Footer/footer'
-import {Header} from '../../components/Header/header'
-import {SingerList} from '../../components/SingerList/SingerList'
+import { Link } from "react-router-dom"
+
+import {Footer} from '../../components/Footer'
+import {Header} from '../../components/Header'
+import {SingerList} from '../../components/SingerList'
 
 export class SingersPage extends React.Component{
 
@@ -10,7 +12,7 @@ return (
     <div className="p-0 m-0">
         <Header/>
         <div>
-        <a href="/addSinger" class="btn btn-secondary" role="button">Add Track</a>
+        <Link className="btn btn-secondary" to="/addSinger">Add Singer</Link>
         </div>
         <div class='min-vh-100'>
          <SingerList/>   

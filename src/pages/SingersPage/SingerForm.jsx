@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
-import axios from 'axios'
-import { Footer } from '../../components/Footer/footer'
-import {Header} from '../../components/Header/header'
+import { Footer } from '../../components/Footer'
+import {Header} from '../../components/Header'
 
 class FormSinger extends Component{
     constructor(props){
         super(props)
-
         this.state ={
             name:''
         }
@@ -18,23 +16,19 @@ class FormSinger extends Component{
 
     submitHandler = e => {
         e.preventDefault()
-        console.log(this.state)
-        axios.post('http://127.0.0.1:8000/api/singers/', this.state)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(error =>{
-            console.log(error)
-        })
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(this.state)
+        };
+        fetch('http://127.0.0.1:8000/api/singers/', requestOptions)
     }
 
-
     render(){ 
-        const {name} = this.state
         return(
             <div>
                 <Header/>
-            <div class="offset-md-3 min-vh-100"  style={{ width: "36rem" }}>
+                <div class="offset-md-3 min-vh-100 m-5">
                 <form onSubmit={this.submitHandler} >
                     <div class="form-group">
                     <label for="exampleFormControlInput1">Singer Name</label>
@@ -44,7 +38,6 @@ class FormSinger extends Component{
                     name="name" 
                     id="exampleFormControlInput1" 
                     placeholder="FavoriteSinger" 
-                    value={name}
                     onChange={this.changeHandler}/>
                     </div>
                     <button class="btn-secondary" type="submit">Submit</button>
