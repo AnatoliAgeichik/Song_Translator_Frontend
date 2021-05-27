@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom"
 
 export class TrackCard extends React.Component{
     render(){
@@ -9,7 +9,8 @@ export class TrackCard extends React.Component{
                     <h5 class="card-title">{this.props.track.name}</h5>
                     <h6 class="card-subtitle text-muted">{this.props.track.singer}</h6>
                     <p class="card-text">{this.props.track.text}</p>
-                    <a href="#" class="btn btn-secondary">View details</a>
+                    <Link className="btn btn-secondary" to={{pathname:`/tracks/${this.props.track.id}`,
+                                                             state: this.props.track}}>Add Singer</Link>
                 </div>
             </div>
         )
