@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import {Footer} from '../../components/Footer'
 import {Header} from '../../components/Header'
+import {Button, Form} from "react-bootstrap";
 
 
 class TrackForm extends Component{
@@ -36,50 +37,31 @@ class TrackForm extends Component{
             <div>
                 <Header/> 
                 <div class="offset-md-4 min-vh-100 m-5">
-                    <form onSubmit={this.submitHandler} >
-                        <div class="form-group">
-                        <i class="fa fa-google"></i>
-                        <label>Track Name</label>
-                        <input 
-                        type="text" 
-                        class="form-control" 
-                        name="name" 
-                        value={name}
-                        onChange={this.changeHandler}/>
-                        </div>
+                    <Form onSubmit={this.submitHandler} >
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Track Name</Form.Label>
+                            <Form.Control type="text" name="name" value={name} onChange={this.changeHandler}/>
+                        </Form.Group>
 
-                        <div class="form-group">
-                        <label>Text</label>
-                        <input 
-                        type="textarea" 
-                        class="form-control" 
-                        name="text" 
-                        value={text}
-                        onChange={this.changeHandler}/>
-                        </div>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Text</Form.Label>
+                            <Form.Control type="textarea" name="text" value={text} onChange={this.changeHandler} />
+                        </Form.Group>
 
-                        <div class="form-group">
-                        <label >Original language</label>
-                        <input 
-                        type="text" 
-                        class="form-control" 
-                        name="original_language" 
-                        pattern="[a-z]{2}"
-                        value={original_language}
-                        onChange={this.changeHandler}/>
-                        </div>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Original language</Form.Label>
+                            <Form.Control type="text" name="original_language" pattern="[a-z]{2}"
+                                          value={original_language} onChange={this.changeHandler} />
+                        </Form.Group>
 
-                        <div class="form-group">
-                        <label>Singer name</label>
-                        <input 
-                        type="text" 
-                        class="form-control" 
-                        name="singer" 
-                        value={singer}
-                        onChange={this.changeHandler}/>
-                        </div>
-                        <button class="btn-secondary" type="submit">Submit</button>
-                    </form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Singer name</Form.Label>
+                            <Form.Control type="text" name="singer"
+                                          value={singer} onChange={this.changeHandler} />
+                        </Form.Group>
+
+                        <Button variant="secondary" type="submit">Submit</Button>
+                    </Form>
                 </div>
                 <Footer/>
             </div>

@@ -9,7 +9,7 @@ export class TracksPage extends React.Component{
 
     render() {
         return (
-            <div className="p-0 m-0">
+            <div>
                 <Header/>
                 <div>
                 <Link className="btn btn-secondary" to="/addTrack">Add Track</Link>

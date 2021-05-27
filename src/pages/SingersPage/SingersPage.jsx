@@ -9,7 +9,7 @@ export class SingersPage extends React.Component{
 
 render() {
     return (
-        <div className="p-0 m-0">
+        <div>
             <Header/>
             <div>
             <Link className="btn btn-secondary" to="/addSinger">Add Singer</Link>

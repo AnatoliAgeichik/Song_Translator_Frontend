@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {Button, Form} from "react-bootstrap";
+
 import { Footer } from '../../components/Footer'
 import {Header} from '../../components/Header'
 
@@ -29,19 +31,13 @@ class FormSinger extends Component{
             <div>
                 <Header/>
                 <div class="offset-md-3 min-vh-100 m-5">
-                <form onSubmit={this.submitHandler} >
-                    <div class="form-group">
-                    <label for="exampleFormControlInput1">Singer Name</label>
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    name="name" 
-                    id="exampleFormControlInput1" 
-                    placeholder="FavoriteSinger" 
-                    onChange={this.changeHandler}/>
-                    </div>
-                    <button class="btn-secondary" type="submit">Submit</button>
-                </form>
+                <Form onSubmit={this.submitHandler} >
+                    <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Singer Name</Form.Label>
+                            <Form.Control type="text" name="name" placeholder="FavoriteSinger"  onChange={this.changeHandler}/>
+                    </Form.Group>
+                    <Button variant="secondary" type="submit">Submit</Button>
+                </Form>
             </div>
             <Footer/>
         </div>

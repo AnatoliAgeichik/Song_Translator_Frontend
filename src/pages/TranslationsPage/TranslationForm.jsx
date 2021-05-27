@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Form} from 'react-bootstrap'
+import {Form, Button} from 'react-bootstrap'
 
 import {Header} from "../../components/Header";
 import {Footer} from "../../components/Footer";
@@ -11,7 +11,7 @@ class TranslationForm extends Component{
             track_id:'',
             text:'',
             language:'en',
-            auto_translate:true
+            auto_translate:"true"
         }
     }
 
@@ -38,19 +38,18 @@ class TranslationForm extends Component{
             <div>
                 <Header/>
                 <div class="offset-md-4 min-vh-100 m-5">
-                    <form onSubmit={this.submitHandler} >
-                        <div class="form-group">
-                        <label>Text</label>
-                        <input
-                        type="textarea"
-                        class="form-control"
-                        name="text"
-                        value={text}
-                        onChange={this.changeHandler}/>
-                        </div>
 
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Example select</Form.Label>
+                    <Form onSubmit={this.submitHandler} >
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Text</Form.Label>
+                            <Form.Control type="textarea" name="text" value={text} onChange={this.changeHandler} />
+                            <Form.Text className="text-muted">
+                              If you select auto translation, this field may be empty
+                            </Form.Text>
+                      </Form.Group>
+
+                        <Form.Group>
+                            <Form.Label>Language</Form.Label>
                             <Form.Control as="select" value={language} onChange={this.changeHandler} name="language">
                                 <option value="en">English</option>
                                 <option value="ru">Russian</option>
@@ -60,16 +59,15 @@ class TranslationForm extends Component{
                             </Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Example select</Form.Label>
+                        <Form.Group>
+                            <Form.Label>Auto translation</Form.Label>
                             <Form.Control as="select" value={auto_translate} onChange={this.changeHandler} name="auto_translate">
                                 <option value="true">true</option>
                                 <option value="false">false</option>
                             </Form.Control>
                         </Form.Group>
-
-                        <button class="btn-secondary" type="submit">Submit</button>
-                    </form>
+                        <Button variant="secondary" type="submit">Submit</Button>
+                    </Form>
                 </div>
                 <Footer/>
             </div>
