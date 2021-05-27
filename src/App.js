@@ -9,6 +9,7 @@ import SingerDetail from './pages/SingersPage/DetailPage'
 import TrackDetail from './pages/TracksPage/TrackDetail'
 import TranslationsPage from './pages/TranslationsPage/TranslationsPage'
 import TranslationDetail from './pages/TranslationsPage/TranslationDetail'
+import TranslationForm from "./pages/TranslationsPage/TranslationForm";
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -35,6 +36,9 @@ function App() {
      </Switch>
      <Switch>
         <Route path="/addSinger" component={SingerForm} />
+     </Switch>
+     <Switch>
+        <Route path="/addTranslation" component={TranslationForm} />
      </Switch>
     </div>
     </Router>
