@@ -9,9 +9,9 @@ export class TranslationDetail extends React.Component{
         return (
             <div>
                 <Header/>
-                <div class="jumbotron min-vh-100 text-center">
-                    <p class="lead">{this.props.location.state.language}</p>
-                    <hr class="my-4"/>
+                <div className="jumbotron min-vh-100 text-center">
+                    <p className="lead">{this.props.location.state.language}</p>
+                    <hr className="my-4"/>
                     <p>{this.props.location.state.text}</p>
                 </div>
                 <Footer/>

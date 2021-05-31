@@ -8,7 +8,7 @@ class TranslationForm extends Component{
       constructor(props){
         super(props)
         this.state ={
-            track_id:'',
+            track_id:this.props.location.state,
             text:'',
             language:'en',
             auto_translate:"true"
@@ -19,17 +19,21 @@ class TranslationForm extends Component{
         this.setState({[e.target.name]: e.target.value})
     }
 
+    changeHandlerAutoTranslate = (e) =>{
+          this.setState({[e.target.name]: (e.target.value==="true")})
+    }
+
+
+
     submitHandler = e => {
         e.preventDefault()
-        this.state.track_id = this.props.location.state
-        this.state.auto_translate = (this.state.auto_translate==="true")
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)
         };
         console.log(JSON.stringify(this.state))
-        fetch(`http://127.0.0.1:8000/api/tracks/${this.props.location.state}/translations/`, requestOptions)
+        fetch(`/tracks/${this.props.location.state}/translations/`, requestOptions)
     }
 
     render(){
@@ -37,7 +41,7 @@ class TranslationForm extends Component{
         return(
             <div>
                 <Header/>
-                <div class="offset-md-4 min-vh-100 m-5">
+                <div className="offset-md-4 min-vh-100 m-5">
 
                     <Form onSubmit={this.submitHandler} >
                         <Form.Group controlId="formBasicEmail">
@@ -61,7 +65,8 @@ class TranslationForm extends Component{
 
                         <Form.Group>
                             <Form.Label>Auto translation</Form.Label>
-                            <Form.Control as="select" value={auto_translate} onChange={this.changeHandler} name="auto_translate">
+                            <Form.Control as="select" value={auto_translate} onChange={this.changeHandlerAutoTranslate}
+                                          name="auto_translate">
                                 <option value="true">true</option>
                                 <option value="false">false</option>
                             </Form.Control>

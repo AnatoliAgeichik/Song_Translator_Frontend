@@ -20,10 +20,13 @@ class FormSinger extends Component{
         e.preventDefault()
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Accept': 'application/json, text/plain',
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
             body: JSON.stringify(this.state)
         };
-        fetch('http://127.0.0.1:8000/api/singers/', requestOptions)
+        fetch('/singers/', requestOptions)
     }
 
     render(){ 

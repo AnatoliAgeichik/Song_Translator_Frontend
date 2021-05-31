@@ -14,7 +14,7 @@ render() {
             <div>
             <Link className="btn btn-secondary" to="/addSinger">Add Singer</Link>
             </div>
-            <div class='min-vh-100'>
+            <div className='min-vh-100'>
              <SingerList/>
             </div>
             <Footer/>

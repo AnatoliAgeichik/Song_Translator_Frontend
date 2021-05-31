@@ -11,7 +11,7 @@ export class HomePage extends React.Component{
         return (
             <div>
                 <Header/>
-                <div class='min-vh-100'>
+                <div className='min-vh-100'>
                  <TrackList/>
                 </div>
                 <Footer/>

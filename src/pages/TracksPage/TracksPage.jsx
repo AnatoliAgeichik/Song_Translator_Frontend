@@ -14,7 +14,7 @@ export class TracksPage extends React.Component{
                 <div>
                 <Link className="btn btn-secondary" to="/addTrack">Add Track</Link>
                 </div>
-                <div class='min-vh-100'>
+                <div className='min-vh-100'>
                  <TrackList/>
                 </div>
                 <Footer/>

@@ -15,7 +15,7 @@ export class TranslationsPage extends React.Component{
                 <Link className="btn btn-secondary"
                       to={{pathname:"/addTranslation", state: this.props.location.state}}>Add Translation</Link>
                 </div>
-                <div class='min-vh-100'>
+                <div className='min-vh-100'>
                  <TranslationList id={this.props.location.state}/>
                 </div>
                 <Footer/>

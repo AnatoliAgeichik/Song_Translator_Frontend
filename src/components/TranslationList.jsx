@@ -11,7 +11,7 @@ export class TranslationList extends React.Component {
   }
 
   fetchData() {
-    fetch(`http://127.0.0.1:8000/api/tracks/${this.props.id}/translations/`)
+    fetch(`/tracks/${this.props.id}/translations/`)
       .then(response => response.json())
       .then((data) => {
         this.setState({
@@ -27,9 +27,9 @@ export class TranslationList extends React.Component {
   render() {
     const translations = this.state.data;
     return (
-      <div class="m-5">
+      <div className="m-5">
         {translations.map(translation =>
-          <TranslationCard translation={translation} />)}
+          <TranslationCard translation={translation} key={translation.id}/>)}
       </div>
     );
   }

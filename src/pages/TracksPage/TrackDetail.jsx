@@ -12,12 +12,12 @@ export class TrackDetail extends React.Component{
         return (
             <div>
                 <Header/>
-                <div class="jumbotron min-vh-100 text-center">
-                    <h1 class="display-4">{this.props.location.state.name}</h1>
-                    <p class="lead">{this.props.location.state.singer}</p>
-                    <hr class="my-4"/>
+                <div className="jumbotron min-vh-100 text-center">
+                    <h1 className="display-4">{this.props.location.state.name}</h1>
+                    <p className="lead">{this.props.location.state.singer}</p>
+                    <hr className="my-4"/>
                     <p>{this.props.location.state.text}</p>
-                    <p class="lead">
+                    <p className="lead">
                         <Link className="btn btn-secondary btn-lg"
                               role="button"
                               to={{pathname:`/tracks/${this.props.location.state.id}/translations`,

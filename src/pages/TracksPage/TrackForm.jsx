@@ -9,7 +9,7 @@ class TrackForm extends Component{
       constructor(props){
         super(props)
         this.state ={
-            name:'',
+            track_name:'',
             text:'',
             original_language:'',
             singer:[]
@@ -20,27 +20,32 @@ class TrackForm extends Component{
         this.setState({[e.target.name]: e.target.value})
     }
 
+    changeHandlerSinger = (e) =>{
+          this.setState({[e.target.name]: (e.target.value.split(',')).map(name => (name.trim()))})
+    }
+
+
     submitHandler = e => {
         e.preventDefault()
-        this.state.singer = (this.state.singer.split(',')).map(name => (name.trim()))        
+        //this.state.singer = (this.state.singer.split(',')).map(name => (name.trim()))
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)
         };
-        fetch('http://127.0.0.1:8000/api/tracks/', requestOptions)
+        fetch('/tracks/', requestOptions)
     }
 
     render(){ 
-        const {name, text, original_language, singer} = this.state
+        const {track_name, text, original_language, singer} = this.state
         return(
             <div>
                 <Header/> 
-                <div class="offset-md-4 min-vh-100 m-5">
+                <div className="offset-md-4 min-vh-100 m-5">
                     <Form onSubmit={this.submitHandler} >
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Track Name</Form.Label>
-                            <Form.Control type="text" name="name" value={name} onChange={this.changeHandler}/>
+                            <Form.Control type="text" name="track_name" value={track_name} onChange={this.changeHandler}/>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicEmail">
@@ -57,7 +62,7 @@ class TrackForm extends Component{
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Singer name</Form.Label>
                             <Form.Control type="text" name="singer"
-                                          value={singer} onChange={this.changeHandler} />
+                                          value={singer} onChange={this.changeHandlerSinger} />
                         </Form.Group>
 
                         <Button variant="secondary" type="submit">Submit</Button>
