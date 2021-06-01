@@ -11,7 +11,7 @@ export class SingerList extends React.Component{
     }
 
     fetchData(){
-        fetch('http://127.0.0.1:8000/api/singers/')
+        fetch('/singers/')
         .then(response=>response.json())
         .then((data)=>{
             this.setState({
@@ -27,9 +27,9 @@ export class SingerList extends React.Component{
     render(){
         const singers=this.state.data;        
         return (
-        <div class="m-5">
+        <div className="m-5">
             {singers.map(singer =>
-            <SingerCard singer={singer}/>
+            <SingerCard singer={singer} key={singer.id}/>
             )}
         </div>
         );
