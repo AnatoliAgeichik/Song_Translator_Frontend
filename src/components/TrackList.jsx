@@ -6,7 +6,10 @@ export class TrackList extends React.Component{
     constructor(){
       super();
       this.state={
-        data:[]
+        data:[],
+        count:0,
+        next_page:"",
+        previous_page:""
       };
     }
     
@@ -15,7 +18,10 @@ export class TrackList extends React.Component{
         .then(response=>response.json())
         .then((data)=>{
           this.setState({
-            data:data
+            data:data.results,
+            count:data.count,
+            next_page:data.next,
+            previous_page:data.previous
           });
         });
     }

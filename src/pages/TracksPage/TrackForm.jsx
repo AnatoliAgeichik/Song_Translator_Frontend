@@ -30,7 +30,8 @@ class TrackForm extends Component{
         //this.state.singer = (this.state.singer.split(',')).map(name => (name.trim()))
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' ,
+                       'Authorization': 'Token ' + localStorage.getItem("token")},
             body: JSON.stringify(this.state)
         };
         fetch('/tracks/', requestOptions)

@@ -10,6 +10,11 @@ import TrackDetail from './pages/TracksPage/TrackDetail'
 import TranslationsPage from './pages/TranslationsPage/TranslationsPage'
 import TranslationDetail from './pages/TranslationsPage/TranslationDetail'
 import TranslationForm from "./pages/TranslationsPage/TranslationForm";
+// import AuthenticationForm from "./components/AuthenticationForm";
+// import RegistrationForm from "./components/RegistrationForm";
+import {AuthenticationPage} from "./pages/RegistrationPage/AuthenticationPage";
+import {RegistrationPage} from "./pages/RegistrationPage/RegistrationPage";
+
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -40,6 +45,13 @@ function App() {
      <Switch>
         <Route path="/addTranslation" component={TranslationForm} />
      </Switch>
+     <Switch>
+         <Route path ="/sign_in" component={AuthenticationPage}/>
+     </Switch>
+     <Switch>
+         <Route path ="/sign_up" component={RegistrationPage}/>
+     </Switch>
+
     </div>
     </Router>
   );
