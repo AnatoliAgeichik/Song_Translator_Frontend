@@ -17,8 +17,6 @@ export class RegistrationForm extends Component{
         this.setState({[e.target.name]: e.target.value})
     }
 
-
-
     submitHandler = e => {
         e.preventDefault()
         const requestOptions = {
@@ -30,6 +28,7 @@ export class RegistrationForm extends Component{
             .then(response=>response.json())
         .then((data)=>{
             localStorage.setItem("token", data.token)
+            localStorage.setItem("logged", "true")
         });
     }
 
