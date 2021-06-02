@@ -10,8 +10,6 @@ import TrackDetail from './pages/TracksPage/TrackDetail'
 import TranslationsPage from './pages/TranslationsPage/TranslationsPage'
 import TranslationDetail from './pages/TranslationsPage/TranslationDetail'
 import TranslationForm from "./pages/TranslationsPage/TranslationForm";
-// import AuthenticationForm from "./components/AuthenticationForm";
-// import RegistrationForm from "./components/RegistrationForm";
 import {AuthenticationPage} from "./pages/RegistrationPage/AuthenticationPage";
 import {RegistrationPage} from "./pages/RegistrationPage/RegistrationPage";
 
