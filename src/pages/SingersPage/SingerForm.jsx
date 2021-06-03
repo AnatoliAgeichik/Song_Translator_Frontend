@@ -22,7 +22,8 @@ class FormSinger extends Component{
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain',
-                'Content-Type': 'application/json;charset=UTF-8'
+                'Content-Type': 'application/json;charset=UTF-8',
+                'Authorization': 'token ' + localStorage.getItem("token")
             },
             body: JSON.stringify(this.state)
         };
