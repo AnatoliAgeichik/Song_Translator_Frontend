@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom"
-import {Button} from "react-bootstrap";
+import {FaSearch} from "react-icons/fa";
 
 import {Footer} from '../../components/Footer'
 import {Header} from '../../components/Header'
@@ -31,8 +31,7 @@ export class TranslationsPage extends React.Component{
                             <form className="input-group mb-3 pt-4" onSubmit={this.searchHandler}>
                                 <input type="text" className="form-control" placeholder="search"
                                        name="search" onChange={this.searchHandler}/>
-                                <Button className="input-group-append align-self-md-center pl-1"
-                                        variant="secondary" type="submit">Submit</Button>
+                                <FaSearch className="input-group-append align-self-md-center pl-1"/>
                             </form>
                         </div>
                         <div className='col-md-9 pr-5'>

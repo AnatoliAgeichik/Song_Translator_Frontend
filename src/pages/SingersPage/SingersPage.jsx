@@ -14,9 +14,7 @@ export class SingersPage extends React.Component{
     }
 
     searchCallback = data => {
-        if (data){
-            this.setState({search:data})
-        }
+        this.setState({search:data})
     }
 
     render() {
