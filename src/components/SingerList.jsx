@@ -5,20 +5,20 @@ import {Button} from "react-bootstrap";
 
 
 export class SingerList extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
           data:[],
           count:0,
           next_page:"",
           previous_page:"",
-          current_page:"/singers/"
+          current_page:"?page=1",
         };
     }
 
     changePage(link){
         if (link) {
-            this.state.current_page = link.substr(link.indexOf("singers"))
+            this.state.current_page = link.substr(link.indexOf("?"))
             this.fetchData()
         }
     }
@@ -31,9 +31,15 @@ export class SingerList extends React.Component{
         this.changePage(this.state.next_page)
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.search !== prevProps.search){
+            this.setState({current_page:'?page=1'})
+            this.fetchData()
+        }
+    }
 
     fetchData(){
-        fetch(`${this.state.current_page}`)
+        fetch(`/singers/${this.state.current_page}&search=${this.props.search}`)
         .then(response=>response.json())
         .then((data)=>{
             this.setState({

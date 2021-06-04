@@ -1,24 +1,38 @@
 import React from 'react';
-import { Link } from "react-router-dom"
 
 import {Footer} from '../../components/Footer'
 import {Header} from '../../components/Header'
 import {SingerList} from '../../components/SingerList'
+import {PageMenu} from '../../components/PageMenu'
 
 export class SingersPage extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            search:""
+        }
+    }
 
-render() {
-    return (
-        <div>
-            <Header/>
+    searchCallback = data => {
+        if (data){
+            this.setState({search:data})
+        }
+    }
+
+    render() {
+        return (
             <div>
-            <Link className="btn btn-secondary" to="/addSinger">Add Singer</Link>
+                <Header/>
+                <div className='min-vh-100'>
+                    <div className="d-flex justify-content-center">
+                        <PageMenu parentCallback = {this.searchCallback} btnText="Add Singer" form_link="/addSinger" />
+                        <div className="col-md-10 pr-5">
+                            <SingerList search={this.state.search}/>
+                        </div>
+                    </div>
+                 </div>
+                <Footer/>
             </div>
-            <div className='min-vh-100'>
-             <SingerList/>
-            </div>
-            <Footer/>
-        </div>
-    );
-}
+        );
+    }
 }

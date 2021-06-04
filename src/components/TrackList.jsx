@@ -11,13 +11,13 @@ export class TrackList extends React.Component{
         count:0,
         next_page:"",
         previous_page:"",
-        current_page:"/tracks/"
+        current_page:"?page=1"
       };
     }
 
-      changePage(link){
+    changePage(link){
         if (link) {
-            this.state.current_page = link.substr(link.indexOf("tracks"))
+            this.state.current_page = link.substr(link.indexOf("?"))
             this.fetchData()
         }
     }
@@ -29,9 +29,16 @@ export class TrackList extends React.Component{
     nextPage = (e) =>{
         this.changePage(this.state.next_page)
     }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.search !== prevProps.search){
+            this.setState({current_page:'?page=1'})
+            this.fetchData()
+        }
+    }
     
     fetchData(){
-      fetch(`${this.state.current_page}`)
+      fetch(`/tracks/${this.state.current_page}&search=${this.props.search}`)
         .then(response=>response.json())
         .then((data)=>{
           this.setState({

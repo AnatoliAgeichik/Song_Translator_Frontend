@@ -12,7 +12,7 @@ export class HomePage extends React.Component{
             <div>
                 <Header/>
                 <div className='min-vh-100'>
-                 <TrackList/>
+                 <TrackList search=""/>
                 </div>
                 <Footer/>
             </div>
