@@ -31,14 +31,14 @@ export class TrackList extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.search !== prevProps.search){
+        if (this.props.search !== prevProps.search || this.props.ordering !== prevProps.ordering){
             this.setState({current_page:'?page=1'})
             this.fetchData()
         }
     }
     
     fetchData(){
-      fetch(`/tracks/${this.state.current_page}&search=${this.props.search}`)
+      fetch(`/tracks/${this.state.current_page}&search=${this.props.search}${this.props.ordering}`)
         .then(response=>response.json())
         .then((data)=>{
           this.setState({

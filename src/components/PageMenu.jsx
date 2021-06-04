@@ -12,7 +12,7 @@ export class PageMenu extends React.Component{
 
     render() {
         return(
-             <div className="pt-5 pl-5">
+             <div>
                 <Link className="btn btn-secondary" to={this.props.form_link}>{this.props.btnText}</Link>
                 <form className="input-group mb-3 pt-4" onSubmit={this.onTrigger}>
                     <input type="text" className="form-control" placeholder="search"

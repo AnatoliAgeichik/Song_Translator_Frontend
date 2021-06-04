@@ -6,7 +6,7 @@ export class TrackCard extends React.Component{
         return(
             <div className="card text-center p-3 mt-3">
                 <div className="card-body">
-                    <h5 className="card-title">{this.props.track.name}</h5>
+                    <h5 className="card-title">{this.props.track.track_name}</h5>
                     <h6 className="card-subtitle text-muted">{this.props.track.singer}</h6>
                     <p className="card-text">{this.props.track.text}</p>
                     <Link className="btn btn-secondary" to={{pathname:`/tracks/${this.props.track.id}`,

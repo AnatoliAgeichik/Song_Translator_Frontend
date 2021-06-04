@@ -18,9 +18,7 @@ export class TranslationList extends React.Component {
 
   changePage(link){
         if (link) {
-            console.log(this.state.current_page)
             this.state.current_page = link.substr(link.indexOf("/tracks"))
-            console.log(this.state.current_page)
             this.fetchData()
         }
     }
@@ -34,14 +32,14 @@ export class TranslationList extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.search !== prevProps.search){
+        if (this.props.search !== prevProps.search || this.props.ordering !== prevProps.ordering){
             this.setState({current_page:`/tracks/${this.props.id}/translations/?page=1`})
             this.fetchData()
         }
     }
 
   fetchData() {
-    fetch(`${this.state.current_page}&search=${this.props.search}`)
+    fetch(`${this.state.current_page}&search=${this.props.search}${this.props.ordering}`)
       .then(response => response.json())
       .then((data) => {
         this.setState({

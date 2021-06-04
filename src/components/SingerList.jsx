@@ -32,14 +32,14 @@ export class SingerList extends React.Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.search !== prevProps.search){
+        if (this.props.search !== prevProps.search || this.props.ordering !== prevProps.ordering){
             this.setState({current_page:'?page=1'})
             this.fetchData()
         }
     }
 
     fetchData(){
-        fetch(`/singers/${this.state.current_page}&search=${this.props.search}`)
+        fetch(`/singers/${this.state.current_page}&search=${this.props.search}${this.props.ordering}`)
         .then(response=>response.json())
         .then((data)=>{
             this.setState({
