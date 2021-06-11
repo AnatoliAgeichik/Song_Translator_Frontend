@@ -11,34 +11,35 @@ export class TrackList extends React.Component{
         count:0,
         next_page:"",
         previous_page:"",
-        current_page:"?page=1"
+        params:window.location.search
       };
     }
 
-    changePage(link){
-        if (link) {
-            this.state.current_page = link.substr(link.indexOf("?"))
-            this.fetchData()
-        }
-    }
-
     prevPage = (e) =>{
-        this.changePage(this.state.previous_page)
+        if (this.state.previous_page) {
+            this.setState({params: this.state.previous_page.substr(this.state.previous_page.indexOf("?"))})
+        }
     }
 
     nextPage = (e) =>{
-        this.changePage(this.state.next_page)
+        if (this.state.next_page) {
+            this.setState({params: this.state.next_page.substr(this.state.next_page.indexOf("?"))})
+        }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.params !== prevState.params){
+            this.props.histroyCallaback('/tracks'+this.state.params)
+            this.fetchData()
+        }
         if (this.props.search !== prevProps.search || this.props.ordering !== prevProps.ordering){
-            this.setState({current_page:'?page=1'})
+            this.setState({params:`?page=1&ordering=${this.props.ordering}&search=${this.props.search}`})
             this.fetchData()
         }
     }
-    
+
     fetchData(){
-      fetch(`/tracks/${this.state.current_page}&search=${this.props.search}${this.props.ordering}`)
+      fetch(`/tracks${this.state.params}`)
         .then(response=>response.json())
         .then((data)=>{
           this.setState({
@@ -49,11 +50,11 @@ export class TrackList extends React.Component{
           });
         });
     }
-    
+
     componentDidMount(){
       this.fetchData();
     }
-    
+
     render(){
       const tracks=this.state.data;
       return (

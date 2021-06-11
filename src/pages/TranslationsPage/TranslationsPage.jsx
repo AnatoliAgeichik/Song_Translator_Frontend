@@ -18,6 +18,9 @@ export class TranslationsPage extends React.Component{
 
         }
     }
+    historyCallback = data => {
+        this.props.history.push(data)
+    }
 
     searchHandler = e => {
        this.setState({[e.target.name]:e.target.value})
@@ -57,7 +60,7 @@ export class TranslationsPage extends React.Component{
                         </div>
                         <div className='col-md-9 pr-5'>
                             <TranslationList id={this.props.location.state} search={this.state.search}
-                                             ordering={this.state.ordering}/>
+                                             ordering={this.state.ordering} histroyCallaback = {this.historyCallback}/>
                         </div>
                     </div>
                 </div>

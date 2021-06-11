@@ -12,12 +12,17 @@ export class SingersPage extends React.Component{
         this.state={
             search:"",
             title_dropdown:"name",
-            ordering:"&ordering=name"
+            ordering:"&ordering=name",
+            page:"",
         }
     }
 
     searchCallback = data => {
         this.setState({search:data})
+    }
+
+    historyCallback = data => {
+        this.props.history.push(data)
     }
 
     orderHandler = data =>{
@@ -29,7 +34,6 @@ export class SingersPage extends React.Component{
             this.setState({title_dropdown:"name desc"})
         }
     }
-
 
     render() {
         return (
@@ -50,7 +54,8 @@ export class SingersPage extends React.Component{
 
                         </div>
                         <div className="col-md-10 pr-5">
-                            <SingerList search={this.state.search} ordering={this.state.ordering}/>
+                            <SingerList search={this.state.search} ordering={this.state.ordering}
+                                        histroyCallaback = {this.historyCallback}/>
                         </div>
                     </div>
                  </div>

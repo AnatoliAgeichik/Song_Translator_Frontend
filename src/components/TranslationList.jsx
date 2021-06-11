@@ -11,42 +11,43 @@ export class TranslationList extends React.Component {
       count:0,
       next_page:"",
       previous_page:"",
-      current_page:`/tracks/${this.props.id}/translations/?page=1`
-
+      current_page:`/tracks/${this.props.id}/translations`,
+      params:window.location.search
     };
   }
 
-  changePage(link){
-        if (link) {
-            this.state.current_page = link.substr(link.indexOf("/tracks"))
+  prevPage = (e) =>{
+        if (this.state.previous_page) {
+            this.setState({params: this.state.previous_page.substr(this.state.previous_page.indexOf("?"))})
+        }
+  }
+
+  nextPage = (e) =>{
+        if (this.state.next_page) {
+            this.setState({params: this.state.next_page.substr(this.state.next_page.indexOf("?"))})
+        }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.params !== prevState.params){
+            this.props.histroyCallaback(this.state.current_page+this.state.params)
             this.fetchData()
         }
-    }
-
-    prevPage = (e) =>{
-        this.changePage(this.state.previous_page)
-    }
-
-    nextPage = (e) =>{
-        this.changePage(this.state.next_page)
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.search !== prevProps.search || this.props.ordering !== prevProps.ordering){
-            this.setState({current_page:`/tracks/${this.props.id}/translations/?page=1`})
+            this.setState({params:`?page=1${this.props.ordering}&search=${this.props.search}`})
             this.fetchData()
         }
     }
 
   fetchData() {
-    fetch(`${this.state.current_page}&search=${this.props.search}${this.props.ordering}`)
+    fetch(`${this.state.current_page}${this.state.params}`)
       .then(response => response.json())
       .then((data) => {
         this.setState({
           data: data.results,
           count:data.count,
+          previous_page:data.previous,
           next_page:data.next,
-          previous_page:data.previous
         });
       });
   }

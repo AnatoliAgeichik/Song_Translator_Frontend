@@ -21,6 +21,10 @@ export class TracksPage extends React.Component{
        this.setState({search:data})
     }
 
+    historyCallback = data => {
+        this.props.history.push(data)
+    }
+
 
     orderHandler = data =>{
         this.setState({ordering:data})
@@ -65,7 +69,8 @@ export class TracksPage extends React.Component{
                             </DropdownButton>
                         </div>
                         <div className="col-md-10 pr-5">
-                            <TrackList search={this.state.search} ordering={this.state.ordering}/>
+                            <TrackList search={this.state.search} ordering={this.state.ordering}
+                                       histroyCallaback = {this.historyCallback}/>
                         </div>
                     </div>
                  </div>
