@@ -4,7 +4,7 @@ import {FaSearch} from "react-icons/fa";
 
 import {Footer} from '../../components/Footer'
 import {Header} from '../../components/Header'
-import {TranslationList} from '../../components/TranslationList'
+import CommentList from "../../components/CommentList";
 import {Dropdown, DropdownButton} from "react-bootstrap";
 
 
@@ -14,11 +14,10 @@ export class TranslationsPage extends React.Component{
         this.state={
             search:"",
             ordering:"&ordering=language",
-            title_dropdown:"Language"
+            title_dropdown:"Mark"
 
         }
     }
-
     historyCallback = data => {
         this.props.history.push(data)
     }
@@ -29,11 +28,11 @@ export class TranslationsPage extends React.Component{
 
     orderHandler = data =>{
         this.setState({ordering:data})
-        if (data.substr(data.indexOf("=")+1) === "language"){
-            this.setState({title_dropdown:"Language"})
+        if (data.substr(data.indexOf("=")+1) === "mark"){
+            this.setState({title_dropdown:"Mark"})
         }
-        else if (data.substr(data.indexOf("=")+1) === "-language"){
-            this.setState({title_dropdown:"Language desc"})
+        else if (data.substr(data.indexOf("=")+1) === "-mark"){
+            this.setState({title_dropdown:"Mark desc"})
         }
     }
 
@@ -45,7 +44,7 @@ export class TranslationsPage extends React.Component{
                     <div className="d-flex justify-content-center">
                         <div className="pt-5 pl-5">
                             <Link className="btn btn-secondary"
-                                  to={{pathname:"/addTranslation", state: this.props.location.state}}>Add Translation</Link>
+                                  to={{pathname:"/addTranslation", state: this.props.location.state}}>Add Comment</Link>
                             <form className="input-group mb-3 pt-4" onSubmit={this.searchHandler}>
                                 <input type="text" className="form-control" placeholder="search"
                                        name="search" onChange={this.searchHandler}/>
@@ -55,12 +54,12 @@ export class TranslationsPage extends React.Component{
                             <DropdownButton alignRight title={this.state.title_dropdown} id="dropdown-menu-align-right"
                                                 variant="secondary"
                                                 onSelect={this.orderHandler}>
-                                    <Dropdown.Item eventKey="&ordering=track_name">Language</Dropdown.Item>
-                                    <Dropdown.Item eventKey="&ordering=-track_name">Language desc</Dropdown.Item>
+                                    <Dropdown.Item eventKey="&ordering=track_name">Mark</Dropdown.Item>
+                                    <Dropdown.Item eventKey="&ordering=-track_name">Mark desc</Dropdown.Item>
                             </DropdownButton>
                         </div>
                         <div className='col-md-9 pr-5'>
-                            <TranslationList id={this.props.location.state} search={this.state.search}
+                            <CommentList id={this.props.location.state} search={this.state.search}
                                              ordering={this.state.ordering} histroyCallaback = {this.historyCallback}/>
                         </div>
                     </div>

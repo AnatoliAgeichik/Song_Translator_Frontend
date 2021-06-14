@@ -15,6 +15,7 @@ import TranslationForm from "./pages/TranslationsPage/TranslationEdit";
 import {AuthenticationPage} from "./pages/RegistrationPage/AuthenticationPage";
 import {RegistrationPage} from "./pages/RegistrationPage/RegistrationPage";
 import TranslationEdit from "./pages/TranslationsPage/TranslationEdit";
+import CommentPage from "./pages/CommentPage/CommentPage";
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/tracks" component={TracksPage} />
         <Route exact path="/tracks/:id" component={TrackDetail} />
         <Route exact path ="/tracks/:id/translations" component={TranslationsPage}/>
+        <Route exact path ="/tracks/:id/comments" component={CommentPage}/>
         <Route exact path ="/tracks/:id/translations/:transl_id" component={TranslationDetail}/>
      </Switch>
      <Switch>

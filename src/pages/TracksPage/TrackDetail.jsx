@@ -21,7 +21,7 @@ export class TrackDetail extends React.Component{
                     </div>
                     <div className="d-flex justify-content-end">
                         <Link to={{pathname:`/tracks/${this.props.location.state.id}/comments`,
-                                   state:this.props.location.state}}><GoComment/></Link>
+                                   state:this.props.location.state.id}}><GoComment/></Link>
                     </div>
                     <h1 className="display-4">{this.props.location.state.name}</h1>
                     <p className="lead">{this.props.location.state.singer}</p>
