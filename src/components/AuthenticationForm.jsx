@@ -25,7 +25,7 @@ export class AuthenticationForm extends Component{
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)
         };
-        fetch('/users/login/', requestOptions)
+        fetch('/users/login', requestOptions)
             .then(response=>response.json())
         .then((data)=>{
             localStorage.setItem("token", data.token)
