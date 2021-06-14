@@ -11,27 +11,35 @@ export class TrackList extends React.Component{
         count:0,
         next_page:"",
         previous_page:"",
-        current_page:"/tracks/"
+        params:window.location.search
       };
     }
 
-      changePage(link){
-        if (link) {
-            this.state.current_page = link.substr(link.indexOf("tracks"))
+    prevPage = (e) =>{
+        if (this.state.previous_page) {
+            this.setState({params: this.state.previous_page.substr(this.state.previous_page.indexOf("?"))})
+        }
+    }
+
+    nextPage = (e) =>{
+        if (this.state.next_page) {
+            this.setState({params: this.state.next_page.substr(this.state.next_page.indexOf("?"))})
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.params !== prevState.params){
+            this.props.histroyCallaback('/tracks'+this.state.params)
+            this.fetchData()
+        }
+        if (this.props.search !== prevProps.search || this.props.ordering !== prevProps.ordering){
+            this.setState({params:`?page=1&ordering=${this.props.ordering}&search=${this.props.search}`})
             this.fetchData()
         }
     }
 
-    prevPage = (e) =>{
-        this.changePage(this.state.previous_page)
-    }
-
-    nextPage = (e) =>{
-        this.changePage(this.state.next_page)
-    }
-    
     fetchData(){
-      fetch(`${this.state.current_page}`)
+      fetch(`/tracks${this.state.params}`)
         .then(response=>response.json())
         .then((data)=>{
           this.setState({
@@ -42,11 +50,11 @@ export class TrackList extends React.Component{
           });
         });
     }
-    
+
     componentDidMount(){
       this.fetchData();
     }
-    
+
     render(){
       const tracks=this.state.data;
       return (

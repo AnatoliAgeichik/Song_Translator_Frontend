@@ -16,10 +16,10 @@ render(){
           <Nav.Link className="text-light" href="/">Song Translator</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-          <Nav.Link className="text-light" href="/singers">Singers</Nav.Link>
+          <Nav.Link className="text-light" href="/singers?page=1&ordering=name">Singers</Nav.Link>
       </Nav.Item>
       <Nav.Item >
-          <Nav.Link className="text-light" href="/tracks">Tracks</Nav.Link>
+          <Nav.Link className="text-light" href="/tracks?page=1&ordering=track_name">Tracks</Nav.Link>
       </Nav.Item>
 
       <div className={localStorage.getItem("logged")==="true"? 'd-none':'d-flex ml-auto'}>
