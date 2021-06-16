@@ -1,9 +1,8 @@
 import React from 'react';
 
-import CommentCard from "./CommentCard";
 import {Button} from "react-bootstrap";
 
-export class CommentList extends React.Component {
+export class ItemList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +10,7 @@ export class CommentList extends React.Component {
       count:0,
       next_page:"",
       previous_page:"",
-      current_page:`/tracks/${this.props.id}/comments`,
+      current_page:this.props.page,
       params:window.location.search
     };
   }
@@ -48,8 +47,9 @@ export class CommentList extends React.Component {
           count:data.count,
           previous_page:data.previous,
           next_page:data.next,
-        });
-      });
+        })
+        this.props.dataCallback(this.state.data);
+      })
   }
 
   componentDidMount() {
@@ -57,18 +57,11 @@ export class CommentList extends React.Component {
   }
 
   render() {
-    const comments = this.state.data;
-    return (
-      <div className="m-5">
-        {comments.map(comment =>
-          <CommentCard comment={comment} key={comment.id}/>)}
-          <div className="d-flex justify-content-around pb-3">
-                <Button className="btn-secondary" onClick={this.prevPage}>Previous</Button>
-                <Button className="btn-secondary" onClick={this.nextPage}>Next</Button>
-          </div>
-      </div>
-    );
+      return(<div className="d-flex justify-content-around pb-3">
+                                    <Button className="btn-secondary" onClick={this.prevPage}>Previous</Button>
+                                    <Button className="btn-secondary" onClick={this.nextPage}>next</Button>
+                                </div>)
   }
 }
 
-export default CommentList;
+export default ItemList;

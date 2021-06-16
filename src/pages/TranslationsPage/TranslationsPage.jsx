@@ -4,8 +4,9 @@ import {FaSearch} from "react-icons/fa";
 
 import {Footer} from 'components/Footer'
 import {Header} from 'components/Header'
-import {TranslationList} from 'components/TranslationList'
 import {Dropdown, DropdownButton} from "react-bootstrap";
+import {ItemList} from "../../components/ItemList";
+import {TranslationCard} from "../../components/TranslationCard";
 
 
 export class TranslationsPage extends React.Component{
@@ -14,9 +15,13 @@ export class TranslationsPage extends React.Component{
         this.state={
             search:"",
             ordering:"&ordering=language",
-            title_dropdown:"Language"
-
+            title_dropdown:"Language",
+            data:[]
         }
+    }
+
+    dataCallback = data => {
+        this.setState({data:data})
     }
 
     historyCallback = data => {
@@ -60,8 +65,15 @@ export class TranslationsPage extends React.Component{
                             </DropdownButton>
                         </div>
                         <div className='col-md-9 pr-5'>
-                            <TranslationList id={this.props.location.state} search={this.state.search}
-                                             ordering={this.state.ordering} histroyCallaback = {this.historyCallback}/>
+                            <div className="m-5">
+                                {this.state.data.map(translation =>
+                                  <TranslationCard translation={translation} key={translation.id}/>)}
+
+                            </div>
+                            <ItemList search={this.state.search} ordering={this.state.ordering}
+                                      histroyCallaback = {this.historyCallback}
+                                      page = {`/tracks/${this.props.location.state}/translations`}
+                                      dataCallback = {this.dataCallback} />
                         </div>
                     </div>
                 </div>
