@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom"
 import {FaSearch} from "react-icons/fa";
 
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
-import {TranslationList} from '../../components/TranslationList'
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
+import {TranslationList} from 'components/TranslationList'
 import {Dropdown, DropdownButton} from "react-bootstrap";
 
 

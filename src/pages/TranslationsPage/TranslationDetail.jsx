@@ -1,9 +1,10 @@
 import React from 'react';
-
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
 import {FaPencilAlt} from "react-icons/fa";
 import {Link} from "react-router-dom";
+
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
+
 
 export class TranslationDetail extends React.Component{
 

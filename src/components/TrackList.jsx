@@ -1,18 +1,18 @@
 import React from 'react';
 
-import {TrackCard} from './TrackCard'
+import {TrackCard} from "./TrackCard";
 import {Button} from "react-bootstrap";
 
 export class TrackList extends React.Component{
-    constructor(){
-      super();
-      this.state={
-        data:[],
-        count:0,
-        next_page:"",
-        previous_page:"",
-        params:window.location.search
-      };
+    constructor(props){
+        super(props);
+        this.state={
+          data:[],
+          count:0,
+          next_page:"",
+          previous_page:"",
+          params:window.location.search
+        };
     }
 
     prevPage = (e) =>{
@@ -39,35 +39,40 @@ export class TrackList extends React.Component{
     }
 
     fetchData(){
-      fetch(`/tracks${this.state.params}`)
+        console.log(`/tracks/${this.state.params}`)
+        fetch(`/tracks/${this.state.params}`)
         .then(response=>response.json())
         .then((data)=>{
-          this.setState({
+            this.setState({
             data:data.results,
             count:data.count,
+            previous_page:data.previous,
             next_page:data.next,
-            previous_page:data.previous
-          });
+
+            });
         });
     }
 
     componentDidMount(){
-      this.fetchData();
+        this.fetchData();
     }
 
     render(){
-      const tracks=this.state.data;
-      return (
-        <div className="m-5">
-          {tracks.map(track =>
-            <TrackCard track={track} key={track.id}/>)}
+        const tracks=this.state.data;
+        return (
+        <div>
+            <div className="m-5">
+                {tracks.map(track =>
+                <TrackCard track={track} key={track.id}/>
+                )}
+            </div>
             <div className="d-flex justify-content-around pb-3">
                 <Button className="btn-secondary" onClick={this.prevPage}>Previous</Button>
-                <Button className="btn-secondary" onClick={this.nextPage}>Next</Button>
+                <Button className="btn-secondary" onClick={this.nextPage}>next</Button>
             </div>
         </div>
-      );
+        );
     }
-  }
+}
 
 export default TrackList;

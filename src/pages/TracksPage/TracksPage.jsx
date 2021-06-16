@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
-import {TrackList} from '../../components/TrackList'
-import {PageMenu} from "../../components/PageMenu";
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
+import {TrackList} from 'components/TrackList'
+import {PageMenu} from "components/PageMenu";
 import {Dropdown, DropdownButton} from "react-bootstrap";
 
 

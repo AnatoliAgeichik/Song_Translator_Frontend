@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
-import {TrackList} from '../../components/TrackList'
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
+import {TrackList} from 'components/TrackList'
 
 
 export class HomePage extends React.Component{

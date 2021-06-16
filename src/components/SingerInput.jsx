@@ -29,6 +29,5 @@ export class SingerInput extends React.Component{
                 <Button variant="secondary" type="submit">Submit</Button>
             </Form>
         )
-
     }
 }

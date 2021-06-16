@@ -1,10 +1,10 @@
 import React from 'react';
 import {Dropdown, DropdownButton} from "react-bootstrap";
 
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
-import {SingerList} from '../../components/SingerList'
-import {PageMenu} from '../../components/PageMenu'
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
+import {SingerList} from 'components/SingerList'
+import {PageMenu} from 'components/PageMenu'
 
 export class SingersPage extends React.Component{
     constructor(props) {

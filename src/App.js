@@ -4,8 +4,8 @@ import {HomePage} from './pages/HomePage/HomePage'
 import {SingersPage} from './pages/SingersPage/SingersPage'
 import SingerForm from './pages/SingersPage/SingerEdit'
 import SingerEdit from './pages/SingersPage/SingerEdit'
-import TrackForm from './pages/TracksPage/TrackEdit'
 import TrackEdit from './pages/TracksPage/TrackEdit'
+import TrackAdd from './pages/TracksPage/TrackAdd'
 import {TracksPage} from './pages/TracksPage/TracksPage'
 import SingerDetail from './pages/SingersPage/DetailPage'
 import TrackDetail from './pages/TracksPage/TrackDetail'
@@ -32,14 +32,14 @@ function App() {
         <Route exact path="/singers/:id" component={SingerDetail}/>
       </Switch>
       <Switch>
-        <Route exact path="/tracks" component={TracksPage} />
+        <Route exact path="/tracks/" component={TracksPage} />
         <Route exact path="/tracks/:id" component={TrackDetail} />
         <Route exact path ="/tracks/:id/translations" component={TranslationsPage}/>
         <Route exact path ="/tracks/:id/comments" component={CommentPage}/>
         <Route exact path ="/tracks/:id/translations/:transl_id" component={TranslationDetail}/>
      </Switch>
      <Switch>
-        <Route path="/addTrack" component={TrackForm} />
+        <Route path="/addTrack" component={TrackAdd} />
      </Switch>
      <Switch>
         <Route path="/addSinger" component={SingerForm} />

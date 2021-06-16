@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 
-import { Footer } from '../../components/Footer'
-import {Header} from '../../components/Header'
-import {SingerInput} from "../../components/SingerInput";
+import { Footer } from 'components/Footer'
+import {Header} from 'components/Header'
+import {SingerInput} from "components/SingerInput";
 
 class SingerEdit extends Component{
 

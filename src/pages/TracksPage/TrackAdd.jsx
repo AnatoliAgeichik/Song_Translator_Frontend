@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
-
-import TrackInput from "../../components/TrackInput";
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
+import TrackInput from "components/TrackInput";
 
 class TrackAdd extends Component{
     formCallback = data => {

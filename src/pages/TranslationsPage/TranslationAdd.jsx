@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 
-import {Header} from "../../components/Header";
-import {Footer} from "../../components/Footer";
-import TranslationInput from "../../components/TranslationInput";
+import {Header} from "components/Header";
+import {Footer} from "components/Footer";
+import TranslationInput from "components/TranslationInput";
 
 class TranslationAdd extends Component{
     formCallback = data => {

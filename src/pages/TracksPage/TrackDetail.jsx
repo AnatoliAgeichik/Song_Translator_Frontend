@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 import {FaPencilAlt} from 'react-icons/fa'
 import {GoComment} from 'react-icons/go'
 
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
 
 
 
