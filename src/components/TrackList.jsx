@@ -39,7 +39,6 @@ export class TrackList extends React.Component{
     }
 
     fetchData(){
-        console.log(`/tracks/${this.state.params}`)
         fetch(`/tracks/${this.state.params}`)
         .then(response=>response.json())
         .then((data)=>{

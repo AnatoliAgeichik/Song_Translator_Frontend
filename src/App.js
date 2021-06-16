@@ -2,7 +2,7 @@ import './App.css';
 
 import {HomePage} from './pages/HomePage/HomePage'
 import {SingersPage} from './pages/SingersPage/SingersPage'
-import SingerForm from './pages/SingersPage/SingerEdit'
+import SingerAdd from './pages/SingersPage/SingerAdd'
 import SingerEdit from './pages/SingersPage/SingerEdit'
 import TrackEdit from './pages/TracksPage/TrackEdit'
 import TrackAdd from './pages/TracksPage/TrackAdd'
@@ -11,7 +11,7 @@ import SingerDetail from './pages/SingersPage/DetailPage'
 import TrackDetail from './pages/TracksPage/TrackDetail'
 import TranslationsPage from './pages/TranslationsPage/TranslationsPage'
 import TranslationDetail from './pages/TranslationsPage/TranslationDetail'
-import TranslationForm from "./pages/TranslationsPage/TranslationEdit";
+import TranslationAdd from "./pages/TranslationsPage/TranslationAdd";
 import {AuthenticationPage} from "./pages/RegistrationPage/AuthenticationPage";
 import {RegistrationPage} from "./pages/RegistrationPage/RegistrationPage";
 import TranslationEdit from "./pages/TranslationsPage/TranslationEdit";
@@ -42,7 +42,7 @@ function App() {
         <Route path="/addTrack" component={TrackAdd} />
      </Switch>
      <Switch>
-        <Route path="/addSinger" component={SingerForm} />
+        <Route path="/addSinger" component={SingerAdd} />
      </Switch>
      <Switch>
         <Route path="/editSinger" component={SingerEdit} />
@@ -54,7 +54,7 @@ function App() {
         <Route path="/editTranslation" component={TranslationEdit} />
      </Switch>
      <Switch>
-        <Route path="/addTranslation" component={TranslationForm} />
+        <Route path="/addTranslation" component={TranslationAdd} />
      </Switch>
      <Switch>
          <Route path ="/sign_in" component={AuthenticationPage}/>

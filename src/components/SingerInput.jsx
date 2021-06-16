@@ -17,7 +17,7 @@ export class SingerInput extends React.Component{
     submitHandler = (event) => {
         this.props.parentCallback(this.state)
         event.preventDefault()
-     }
+    }
 
     render() {
         return(

@@ -6,7 +6,7 @@ export class TranslationInput extends React.Component{
      constructor(props){
         super(props)
         this.state ={
-            track_id:this.props.state.id,
+            track_id:this.props.state,
             text:'',
             language:'en',
             auto_translate:"true"

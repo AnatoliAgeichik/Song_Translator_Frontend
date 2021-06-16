@@ -3,20 +3,11 @@ import React, {Component} from 'react'
 import {Footer} from 'components/Footer'
 import {Header} from 'components/Header'
 import TrackInput from "components/TrackInput";
+import sendRequest from "services/RequestService"
 
 class TrackAdd extends Component{
     formCallback = data => {
-       this.postData(data)
-    }
-
-    postData(data) {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' ,
-                       'Authorization': 'Token ' + localStorage.getItem("token")},
-            body: JSON.stringify(data)
-        };
-        fetch('/tracks/', requestOptions)
+       sendRequest(data, "/tracks/", "POST")
     }
 
     render(){

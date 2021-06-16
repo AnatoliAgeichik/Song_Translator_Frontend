@@ -3,24 +3,12 @@ import React, {Component} from 'react'
 import { Footer } from 'components/Footer'
 import {Header} from 'components/Header'
 import {SingerInput} from "components/SingerInput";
+import sendRequest from "services/RequestService"
 
 class SingerEdit extends Component{
 
     formCallback = data => {
-       this.postData(data)
-    }
-
-    postData(data){
-        const requestOptions = {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json, text/plain',
-                'Content-Type': 'application/json;charset=UTF-8',
-                'Authorization': 'token ' + localStorage.getItem("token")
-            },
-            body: JSON.stringify(data)
-        };
-        fetch(`/singers/${this.props.location.state.id}`, requestOptions)
+       sendRequest(data, `/singers/${this.props.location.state.id}`, 'PUT')
     }
 
     render(){

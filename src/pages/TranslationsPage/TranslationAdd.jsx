@@ -3,20 +3,11 @@ import React, {Component} from "react";
 import {Header} from "components/Header";
 import {Footer} from "components/Footer";
 import TranslationInput from "components/TranslationInput";
+import sendRequest from "services/RequestService"
 
 class TranslationAdd extends Component{
     formCallback = data => {
-       this.postData(data)
-    }
-
-    postData (data) {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json',
-                       'Authorization': 'Token ' + localStorage.getItem("token")},
-            body: JSON.stringify(data)
-        };
-        fetch(`/tracks/${this.props.location.state}/translations`, requestOptions)
+       sendRequest(data, `/tracks/${this.props.location.state}/translations`, 'POST')
     }
 
     render(){
