@@ -1,10 +1,11 @@
 import React from 'react';
 import {Dropdown, DropdownButton} from "react-bootstrap";
 
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
-import {SingerList} from '../../components/SingerList'
-import {PageMenu} from '../../components/PageMenu'
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
+import {PageMenu} from 'components/PageMenu'
+import {ItemList} from 'components/ItemList'
+import {SingerCard} from 'components/SingerCard'
 
 export class SingersPage extends React.Component{
     constructor(props) {
@@ -14,11 +15,17 @@ export class SingersPage extends React.Component{
             title_dropdown:"name",
             ordering:"&ordering=name",
             page:"",
+            data:[]
         }
     }
 
     searchCallback = data => {
         this.setState({search:data})
+
+    }
+
+    dataCallback = data => {
+        this.setState({data:data})
     }
 
     historyCallback = data => {
@@ -54,8 +61,17 @@ export class SingersPage extends React.Component{
 
                         </div>
                         <div className="col-md-10 pr-5">
-                            <SingerList search={this.state.search} ordering={this.state.ordering}
-                                        histroyCallaback = {this.historyCallback}/>
+
+                            <div>
+                                <div className="m-5">
+                                    {this.state.data.map(singer =>
+                                    <SingerCard singer={singer} key={singer.id}/>
+                                    )}
+                                </div>
+                            </div>
+                            <ItemList search={this.state.search} ordering={this.state.ordering}
+                                      histroyCallaback = {this.historyCallback} page = 'singers'
+                                      dataCallback = {this.dataCallback} />
                         </div>
                     </div>
                  </div>

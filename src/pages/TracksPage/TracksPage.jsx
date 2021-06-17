@@ -1,10 +1,11 @@
 import React from 'react';
 
-import {Footer} from '../../components/Footer'
-import {Header} from '../../components/Header'
-import {TrackList} from '../../components/TrackList'
-import {PageMenu} from "../../components/PageMenu";
+import {Footer} from 'components/Footer'
+import {Header} from 'components/Header'
+import {PageMenu} from "components/PageMenu";
 import {Dropdown, DropdownButton} from "react-bootstrap";
+import {ItemList} from "../../components/ItemList";
+import {TrackCard} from "../../components/TrackCard";
 
 
 export class TracksPage extends React.Component{
@@ -13,10 +14,14 @@ export class TracksPage extends React.Component{
         this.state={
             search:"",
             ordering:"&ordering=track_name",
-            title_dropdown:"Track name"
+            title_dropdown:"Track name",
+            data:[]
         }
     }
 
+    dataCallback = data => {
+        this.setState({data:data})
+    }
     searchCallback = data => {
        this.setState({search:data})
     }
@@ -69,8 +74,16 @@ export class TracksPage extends React.Component{
                             </DropdownButton>
                         </div>
                         <div className="col-md-10 pr-5">
-                            <TrackList search={this.state.search} ordering={this.state.ordering}
-                                       histroyCallaback = {this.historyCallback}/>
+
+                            <div className="m-5">
+                                {this.state.data.map(track =>
+                                <TrackCard track={track} key={track.id}/>
+                                )}
+                            </div>
+                            <ItemList search={this.state.search} ordering={this.state.ordering}
+                                      histroyCallaback = {this.historyCallback} page = '/tracks/'
+                                      dataCallback = {this.dataCallback} />
+
                         </div>
                     </div>
                  </div>

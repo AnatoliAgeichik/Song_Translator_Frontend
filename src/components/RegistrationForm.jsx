@@ -24,7 +24,7 @@ export class RegistrationForm extends Component{
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.state)
         };
-        fetch('/users/login/', requestOptions)
+        fetch('/users/', requestOptions)
             .then(response=>response.json())
         .then((data)=>{
             localStorage.setItem("token", data.token)

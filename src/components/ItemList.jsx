@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { TranslationCard } from './TranslationCard'
 import {Button} from "react-bootstrap";
 
-export class TranslationList extends React.Component {
+export class ItemList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +10,7 @@ export class TranslationList extends React.Component {
       count:0,
       next_page:"",
       previous_page:"",
-      current_page:`/tracks/${this.props.id}/translations`,
+      current_page:this.props.page,
       params:window.location.search
     };
   }
@@ -48,8 +47,9 @@ export class TranslationList extends React.Component {
           count:data.count,
           previous_page:data.previous,
           next_page:data.next,
-        });
-      });
+        })
+        this.props.dataCallback(this.state.data);
+      })
   }
 
   componentDidMount() {
@@ -57,18 +57,11 @@ export class TranslationList extends React.Component {
   }
 
   render() {
-    const translations = this.state.data;
-    return (
-      <div className="m-5">
-        {translations.map(translation =>
-          <TranslationCard translation={translation} key={translation.id}/>)}
-          <div className="d-flex justify-content-around pb-3">
-                <Button className="btn-secondary" onClick={this.prevPage}>Previous</Button>
-                <Button className="btn-secondary" onClick={this.nextPage}>Next</Button>
-          </div>
-      </div>
-    );
+      return(<div className="d-flex justify-content-around pb-3">
+                                    <Button className="btn-secondary" onClick={this.prevPage}>Previous</Button>
+                                    <Button className="btn-secondary" onClick={this.nextPage}>next</Button>
+                                </div>)
   }
 }
 
-export default TranslationList;
+export default ItemList;
